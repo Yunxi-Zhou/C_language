@@ -44,11 +44,48 @@ void dereference_array() {
     printf("%d\n", *myNum);
 }
 
+void rest_array() {
+    int myNum[4] = {25,50,75,100};
+
+    // get the value of the second element in myNum
+    //printf("%d\n", *(myNum + 1));
+
+    // get the value of the third element in myNum
+    //printf("%d\n", *(myNum + 2));
+
+    for (int i = 0; i < 4; i++) {
+        printf("%d\n", *(myNum + i));
+    }
+}
+
+void loop_array() {
+    int myNum[4] = {25,50,75,100};
+    int* ptr = myNum;
+    
+    for (int i = 0; i < 4; i++) {
+        printf("%d\n", *(ptr + i));
+    }
+}
+
+void sample_array() {
+    int myNum[4] = {25,50,75,100};
+
+    *myNum = 13;
+
+    *(myNum + 1) = 17;
+
+    printf("%d\n", *myNum);
+
+    printf("%d\n", *(myNum + 1));
+}
+
 int main() {
     //pointArray();
     //pointerVariable();
     //pointerArray();
     //relationship();
-    dereference_array();
+    //dereference_array();
+    //rest_array();
+    sample_array();
     return 0;
 }
