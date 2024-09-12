@@ -9,6 +9,7 @@ int main() {
     return 0;
 }
 
+//function definition
 int rec_sum(int k) {
     if (k > 0) {
         return k + rec_sum(k-1);
