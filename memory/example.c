@@ -13,38 +13,23 @@ struct list {
 //function declaration
 void addToList(struct list *myList, int item);
 void setList(struct list *myList);
-void checkList(struct list *myList->data);
+void checkList(struct list *myList);
+void displayList(struct list *myList, int amount);
+void freeList(struct list *myList);
 
 int main() {
     struct list myList;
     int amount;
 
-    myList.numItems = 0;
-    myList.size = 10;
-    myList.data = malloc(myList.size * sizeof(int));
+    setList(&myList);
 
-    // check memory allocation
-    if (myList.data == NULL) {
-        printf("Memory allocation failure\n");
-        return 1;
-    }
+    checkList(&myList);
 
     amount = 44;
 
-    for(int i = 0; i < amount; i++) {
-        addToList(&myList, i + 1);
-    }
+    displayList(&myList, amount);
 
-    //Display
-    for(int j = 0; j < myList.numItems; j++) {
-        printf("%d ", myList.data[j]);
-    }
-
-    printf("\n");
-
-    //deallocate memory
-    free(myList.data);
-    myList.data = NULL;
+    freeList(&myList);
 
     return 0;
 }
@@ -58,4 +43,37 @@ void addToList(struct list *myList, int item) {
     //Add the item to the end of the list
     myList->data[myList->numItems] = item;
     myList->numItems++;
+}
+
+void setList(struct list *myList) {
+    myList->numItems = 0;
+    myList->size = 10;
+    myList->data = malloc(myList->size * sizeof(int));
+}
+
+void checkList(struct list *myList) {
+    //check memory allocation
+    if (myList->data == 0) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+}
+
+void displayList(struct list *myList, int amount) {
+    for (int i = 0; i < amount; i ++) {
+        addToList(myList, i + 1);
+    }
+
+    //Display
+    for (int j = 0; j < myList->numItems; j++) {
+        printf("%d ", myList->data[j]);
+    }
+
+    printf("\n");
+}
+
+void freeList(struct list *myList) {
+    //memory deallocation
+    free(myList->data);
+    myList->data = NULL;
 }
